@@ -1,6 +1,7 @@
 ﻿using System;
 using EmbeddedAuthorizationServer.Provider;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using ODataPOC;
 using Owin;
@@ -13,11 +14,11 @@ namespace ODataPOC
     {
         public void Configuration(IAppBuilder app)
         {
-            //app.UseCookieAuthentication(new CookieAuthenticationOptions
-            //{
-            //    AuthenticationType = "AppCookies",
-            //    LoginPath = new PathString("/users/login"),
-            //});
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = "AppCookies",
+                LoginPath = new PathString("/users/login"),
+            });
 
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
             {
